@@ -25,7 +25,7 @@ function App() {
       <UserProfile
         name="Clara"
         age="28"
-        bio="Enjoys reading and visiting art galleries"
+        bio="Enjoys reading, and visiting art galleries"
       />
       <Footer />
     </div>
