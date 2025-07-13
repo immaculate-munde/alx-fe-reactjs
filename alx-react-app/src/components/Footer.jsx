@@ -1,11 +1,12 @@
+// Footer.jsx
+import './Footer.css';
+
 function Footer() {
-    return (
-        <div>
-            <footer>
-            <p>&copy 2023 City Lovers</p>
-            </footer>
-        </div>
-    );
+  return (
+    <footer>
+      <p>&copy; 2023 City Lovers</p>
+    </footer>
+  );
 }
 
 export default Footer;

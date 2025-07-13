@@ -1,0 +1,22 @@
+/* WelcomeMessage.css */
+.welcome-message {
+  width: 100%;
+  background-color: #1e2a40;
+  border-left: 6px solid #646cff;
+  padding: 30px;
+  color: white;
+  box-shadow: inset 0 0 10px rgba(100, 108, 255, 0.2);
+  text-align: center;
+}
+
+.welcome-message h1 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+  color: #646cff;
+}
+
+.welcome-message p {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #cfd9e8;
+}
