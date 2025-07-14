@@ -3,6 +3,7 @@ import UserProfile from './UserProfile';
 function MainContent() {
   return (
     <main style={{ padding: '20px', backgroundColor: '#e8f0fe' }}>
+      <p style={{ color: 'black', fontStyle: 'italic', fontSize: '16px', marginBottom: '15px' }}>I love to visit New York, Paris, and Tokyo.</p>
       <UserProfile name="Jane Doe" age={28} bio="Loves hiking and photography." />
       <UserProfile name="John Smith" age={32} bio="Enjoys architecture and food." />
       <UserProfile name="Alice" age="25" bio="Loves hiking and photography"/>
