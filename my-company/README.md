@@ -26,5 +26,5 @@ This project is a simple company website built using **React** and **Vite** as p
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/<your-username>/alx-fe-reactjs.git
+   git clone https://github.com/<immaculate-munde>/alx-fe-reactjs.git
    cd alx-fe-reactjs
