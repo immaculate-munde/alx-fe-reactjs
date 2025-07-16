@@ -1,4 +1,5 @@
-import UserInfo from './components/UserInfo';
+// src/ProfilePage.jsx
+import UserInfo from './UserInfo';
 
 function ProfilePage() {
   return <UserInfo />;
