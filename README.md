@@ -1,14 +1,6 @@
 # ALX Front-End React Projects
 
-This repository contains multiple React-based projects completed as part of the **ALX Front-End Engineering curriculum**. Each project demonstrates key React concepts such as components, props, routing, state management, and context.
-
-## Repository Structure
-
-alx-fe-reactjs/
-├── alx-react-app/
-├── alx-react-app-new/
-├── alx-react-app-props/
-└── my-company/
+This repository contains multiple React-based projects completed as part of the **ALX Front-End Engineering curriculum**. Each project demonstrates key React concepts, including components, props, routing, state management, and context.
 ---
 
 ## 🧩 Projects Overview
