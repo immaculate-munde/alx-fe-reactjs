@@ -1,12 +1,30 @@
-# React + Vite
+# Company Website Project - ALX Front-End React
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a simple company website built using **React** and **Vite** as part of the ALX Front-End React module.
 
-Currently, two official plugins are available:
+## Project Structure
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Project Name**: `my-company`
+- **Framework**: React with Vite
+- **Routing**: React Router DOM
+- **Styling**: Inline CSS
+- **Directory**: `alx-fe-reactjs/my-company`
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Navigation** between pages using React Router
+- **Four Pages**:
+  - **Home** – Welcome message
+  - **About** – Information about the company
+  - **Services** – List of services
+  - **Contact** – Form with state handling
+- **Reusable Components** stored in `src/components`
+- **Simple interactivity** using React hooks
+- **Footer component** (optional enhancement)
+
+## Setup Instructions
+
+1. Clone this repository:
+   ```bash
+   git clone https://github.com/<your-username>/alx-fe-reactjs.git
+   cd alx-fe-reactjs
