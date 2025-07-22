@@ -1,3 +1,4 @@
+
 # ALX Front-End React Projects
 
 This repository contains multiple React-based projects completed as part of the **ALX Front-End Engineering curriculum**. Each project demonstrates key React concepts, including components, props, routing, state management, and context.
@@ -47,6 +48,17 @@ A complete 4-page company website built using **React Router**.
 - Navigation bar and footer components
 
 ---
+### 5. `recipe-sharing-app/`
+A dynamic recipe management app that uses **Zustand** for global state management. Users can add and view recipes through a simple form and list interface.
+
+**Topics Covered**:
+- Zustand store setup
+- State updates and actions
+- Component interaction with global state
+- `useState`, `useEffect` (if extended), controlled forms
+
+---
+
 
 ## 💻 How to Run Any Project
 
