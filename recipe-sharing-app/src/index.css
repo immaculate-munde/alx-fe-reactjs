@@ -66,3 +66,96 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
+form input,
+form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 8px;
+  margin-bottom: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+form button {
+  padding: 10px 20px;
+  background-color: #0077cc;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+form button:hover {
+  background-color: #005fa3;
+}
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f6fa;
+  color: #1e2a38;
+}
+
+.app {
+  padding: 40px;
+  background-color: #f5f6fa;
+  min-height: 100vh;
+}
+
+h1, h2 {
+  color: #0a2342; /* Deep blue */
+}
+
+form {
+  background-color: #e0e5ec; /* Light silver */
+  padding: 20px;
+  border-radius: 12px;
+  max-width: 500px;
+  margin-bottom: 30px;
+  box-shadow: 4px 4px 10px #d1d9e6, -4px -4px 10px #ffffff;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #bcccdc;
+  border-radius: 6px;
+  background-color: #f0f4f8;
+  color: #1e2a38;
+  font-size: 1rem;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #0a2342; /* Deep blue */
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+button:hover {
+  background-color: #133b5c;
+}
+
+.recipe-card {
+  background-color: #ffffff;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 8px rgba(10, 35, 66, 0.1);
+  max-width: 600px;
+}
+
+.recipe-card h3 {
+  color: #0a2342;
+  margin-bottom: 10px;
+}
