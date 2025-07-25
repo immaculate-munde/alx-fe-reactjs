@@ -1,5 +1,5 @@
 // src/components/RecipeList.jsx
-import useRecipeStore from '../store/recipeStore';
+import useRecipeStore from '../components/recipeStore';
 import { Link } from 'react-router-dom';
 
 export default function RecipeList() {

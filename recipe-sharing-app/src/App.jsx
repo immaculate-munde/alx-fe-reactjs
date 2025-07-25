@@ -1,7 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import AddRecipeForm from "./components/AddRecipeForm";
-import RecipeDetail from "./components/RecipeDetail";
-import RecipeList from "./components/RecipeList"; // Assume you have this
+import RecipeDetails from "./components/RecipeDetails";
+import RecipeList from "./components/RecipeList"; 
+import SearchBar from "./components/SearchBar";   
 
 export default function App() {
   return (
@@ -10,7 +11,8 @@ export default function App() {
         <Route path="/" element={<>
           <AddRecipeForm />
           <RecipeList />
-          <RecipeDetail />
+          <RecipeDetails />
+          <SearchBar />
         </>} />
         <Route path="/recipe/:id" element={<RecipeDetails />} />
       </Routes>
