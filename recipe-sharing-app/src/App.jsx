@@ -1,14 +1,18 @@
-import AddRecipeForm from './components/AddRecipeForm';
-import RecipeList from './components/RecipeList';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import AddRecipeForm from "./components/AddRecipeForm";
+import RecipeDetails from "./components/recipeDetails";
+import RecipeList from "./components/RecipeList"; // Assume you have this
 
-function App() {
+export default function App() {
   return (
-    <div>
-      <h1>Recipe Sharing App</h1>
-      <AddRecipeForm />
-      <RecipeList />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<>
+          <AddRecipeForm />
+          <RecipeList />
+        </>} />
+        <Route path="/recipe/:id" element={<RecipeDetails />} />
+      </Routes>
+    </Router>
   );
 }
-
-export default App;
