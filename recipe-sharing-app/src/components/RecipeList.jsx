@@ -1,20 +1,12 @@
-// src/components/RecipeList.jsx
 import useRecipeStore from './recipeStore';
 import { Link } from 'react-router-dom';
-import SearchBar from './SearchBar';
 
 export default function RecipeList() {
-  const recipes = useRecipeStore((state) => state.recipes || []);
-  const searchTerm = useRecipeStore((state) => state.searchTerm || '');
-
-  const filteredRecipes = recipes.filter((recipe) =>
-    recipe.title.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const filteredRecipes = useRecipeStore((state) => state.filteredRecipes);
 
   return (
     <div>
       <h2 style={{ color: 'silver' }}>Recipes</h2>
-      <SearchBar />
       {filteredRecipes.length === 0 ? (
         <p style={{ color: 'white' }}>No matching recipes found.</p>
       ) : (
