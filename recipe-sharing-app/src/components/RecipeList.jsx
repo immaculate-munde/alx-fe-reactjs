@@ -1,17 +1,17 @@
 // src/components/RecipeList.jsx
-import useRecipeStore from '../components/recipeStore';
+import useRecipeStore from './recipeStore';
 import { Link } from 'react-router-dom';
 
 export default function RecipeList() {
-  const filteredRecipes = useRecipeStore((state) => state.filteredRecipes);
+  const recipes = useRecipeStore((state) => state.recipes || []);
 
   return (
     <div>
       <h2 style={{ color: 'silver' }}>Recipes</h2>
-      {filteredRecipes.length === 0 ? (
+      {recipes.length === 0 ? (
         <p style={{ color: 'white' }}>No matching recipes found.</p>
       ) : (
-        filteredRecipes.map((recipe) => (
+        recipes.map((recipe) => (
           <div
             key={recipe.id}
             style={{

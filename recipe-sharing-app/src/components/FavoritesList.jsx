@@ -1,5 +1,5 @@
 // src/components/FavoritesList.jsx
-import useRecipeStore from '../store/recipeStore';
+import useRecipeStore from './recipeStore';
 
 export default function FavoritesList() {
   const recipes = useRecipeStore((state) => state.recipes);

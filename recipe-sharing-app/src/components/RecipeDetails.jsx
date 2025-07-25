@@ -2,7 +2,7 @@
 import React from 'react';
 import FavoriteButton from './FavoriteButton';
 import { useParams } from 'react-router-dom';
-import useRecipeStore from '../store/recipeStore';
+import useRecipeStore from './recipeStore';
 
 function RecipeDetail() {
   const { id } = useParams();
