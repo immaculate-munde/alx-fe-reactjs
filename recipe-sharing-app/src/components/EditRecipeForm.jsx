@@ -1,30 +1,31 @@
-import { useState } from "react";
-import useRecipeStore from "./recipeStore";
+// src/components/EditRecipeForm.jsx
+import { useState } from 'react';
+import useRecipeStore from './recipeStore';
 
-export default function EditRecipeForm({ recipe }) {
+export default function EditRecipeForm({ recipe, onClose }) {
   const [title, setTitle] = useState(recipe.title);
-  const [instructions, setInstructions] = useState(recipe.instructions);
+  const [description, setDescription] = useState(recipe.description);
   const updateRecipe = useRecipeStore((state) => state.updateRecipe);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    updateRecipe({ ...recipe, title, instructions });
+    updateRecipe({ ...recipe, title, description });
+    onClose();
   };
 
   return (
     <form onSubmit={handleSubmit}>
       <input
-        type="text"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
-        required
+        placeholder="Title"
       />
       <textarea
-        value={instructions}
-        onChange={(e) => setInstructions(e.target.value)}
-        required
+        value={description}
+        onChange={(e) => setDescription(e.target.value)}
+        placeholder="Description"
       />
-      <button type="submit">Update Recipe</button>
+      <button type="submit">Save</button>
     </form>
   );
 }
