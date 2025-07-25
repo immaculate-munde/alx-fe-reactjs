@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import AddRecipeForm from "./components/AddRecipeForm";
-import RecipeDetails from "./components/RecipeDetail";
+import RecipeDetail from "./components/RecipeDetail";
 import RecipeList from "./components/RecipeList"; // Assume you have this
 
 export default function App() {
@@ -10,7 +10,7 @@ export default function App() {
         <Route path="/" element={<>
           <AddRecipeForm />
           <RecipeList />
-          <RecipeDetails />
+          <RecipeDetail />
         </>} />
         <Route path="/recipe/:id" element={<RecipeDetails />} />
       </Routes>

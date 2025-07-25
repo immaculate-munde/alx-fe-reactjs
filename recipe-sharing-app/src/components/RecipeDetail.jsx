@@ -4,7 +4,7 @@ import useRecipeStore from "../store/recipeStore";
 import EditRecipeForm from "./EditRecipeForm";
 import DeleteRecipeButton from "./DeleteRecipeButton";
 
-export default function RecipeDetails() {
+export default function RecipeDetail() {
   const { id } = useParams();
   const recipe = useRecipeStore((state) =>
     state.recipes.find((r) => r.id === id)
