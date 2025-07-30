@@ -1,4 +1,7 @@
-/* Reset default margins and make app full height */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 * {
   box-sizing: border-box;
 }
