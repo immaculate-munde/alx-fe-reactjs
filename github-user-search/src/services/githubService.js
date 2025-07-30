@@ -16,7 +16,7 @@ export async function fetchUsers({ username, location, minRepos }) {
     if (location) query += `+location:${location}`;
     if (minRepos) query += `+repos:>=${minRepos}`;
 
-    const response = await axios.get(`${BASE_URL}/search/users?q=${query}`);
+const response = await axios.get("https://api.github.com/search/users?q=" + query);
     return response.data.items;
   } catch (error) {
     throw new Error("Failed to fetch users");
