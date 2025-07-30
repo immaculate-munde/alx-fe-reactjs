@@ -1,12 +1,64 @@
-# React + Vite
+# GitHub User Search
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React application that allows users to search for GitHub profiles using the GitHub Search API. Users can view key information, including their avatar, username, profile URL, location, and public repository count. The app includes advanced search and filtering capabilities.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 🔍 Real-time GitHub user search
+- 📍 Advanced filtering by location and repo count
+- 🌐 GitHub Search API integration
+- ⚡ Built with Vite for fast performance
+- 💅 Styled with Tailwind CSS
+- 📦 State management with Zustand
+- 🔐 Secure API key management with `.env`
+- 🌙 Clean, responsive UI
 
-## Expanding the ESLint configuration
+## 🛠️ Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **React**
+- **Vite**
+- **Tailwind CSS**
+- **Zustand** (state management)
+- **Axios** (HTTP requests)
+- **GitHub REST API**
+
+## 🔧 Installation
+
+1. **Clone the repo**
+   git clone https://github.com/immaculate-munde/alx-fe-reactjs.git
+   cd alx-fe-reactjs/github-user-search
+Install dependencies
+
+
+npm install
+Add your GitHub API key
+Create a .env file in the root with the following:
+
+VITE_APP_GITHUB_API_KEY=your_github_personal_access_token
+Start the development server
+npm run dev
+
+🧪 Build for production
+npm run build
+
+📁 Project Structure
+
+github-user-search/
+├── public/
+├── src/
+│   ├── components/
+│   │   ├── Search.jsx
+│   │   ├── UserCard.jsx
+│   ├── services/
+│   │   └── githubService.js
+│   ├── store/
+│   │   └── userStore.js
+│   ├── App.jsx
+│   └── main.jsx
+├── .env
+├── .gitignore
+├── index.html
+├── package.json
+└── tailwind.config.js
+🌐 Live Demo
+[https://githubusersearch-pied-five.vercel.app/]
