@@ -93,7 +93,7 @@ export default function Search() {
             <img
               src={user.avatar_url}
               alt={user.login}
-              className="w-16 h-16 rounded-full border border-gray-500"
+              className="user-avatar"
             />
             <div>
               <a

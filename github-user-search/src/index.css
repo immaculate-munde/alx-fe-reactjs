@@ -67,3 +67,11 @@ button:hover {
   width: 100px;
   margin-bottom: 1rem;
 }
+.user-avatar {
+  width: 100px;         /* or any fixed size you want */
+  height: 100px;
+  border-radius: 50%;   /* makes the image circular */
+  object-fit: cover;    /* prevents distortion */
+  display: block;
+  margin: 0 auto;       /* centers the image */
+}
