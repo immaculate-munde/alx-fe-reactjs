@@ -1,95 +1,117 @@
-// src/components/Search.jsx
-import React, { useState } from 'react';
-import axios from 'axios';
+import { useState } from "react";
+import { fetchUserData, fetchUsers } from "../services/githubService";
 
 export default function Search() {
-  const [username, setUsername] = useState('');
-  const [location, setLocation] = useState('');
-  const [minRepos, setMinRepos] = useState('');
-  const [users, setUsers] = useState([]);
-  const [error, setError] = useState('');
+  const [username, setUsername] = useState("");
+  const [location, setLocation] = useState("");
+  const [minRepos, setMinRepos] = useState("");
+  const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-  const fetchUsers = async (e) => {
+  const handleSearch = async (e) => {
     e.preventDefault();
+    setResults([]);
+    setError(null);
     setLoading(true);
-    setError('');
-    try {
-      const query = [];
-      if (username) query.push(`${username} in:login`);
-      if (location) query.push(`location:${location}`);
-      if (minRepos) query.push(`repos:>=${minRepos}`);
 
-      const searchQuery = query.join(' ');
-      const response = await axios.get(`https://api.github.com/search/users?q=${encodeURIComponent(searchQuery)}`);
-      setUsers(response.data.items);
+    try {
+      if (location || minRepos) {
+        // Advanced Search
+        const users = await fetchUsers({ username, location, minRepos });
+        setResults(users);
+      } else {
+        // Basic Search
+        const user = await fetchUserData(username);
+        setResults([user]); // Wrap in array for consistent mapping
+      }
     } catch (err) {
-      setError('Failed to fetch users. Please try again.');
+      setError("User not found or an error occurred.");
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="max-w-4xl mx-auto mt-10 px-4">
-      <form onSubmit={fetchUsers} className="bg-white shadow-md rounded p-6 mb-6 space-y-4">
-        <h1 className="text-2xl font-bold text-center">GitHub User Search</h1>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+    <div className="max-w-3xl mx-auto p-6 text-white">
+      <h1 className="text-3xl font-bold mb-6 text-center">GitHub User Search</h1>
+
+      <form onSubmit={handleSearch} className="space-y-4 bg-gray-800 p-4 rounded-lg shadow">
+        <div>
+          <label className="block text-sm mb-1">Username</label>
           <input
             type="text"
-            placeholder="Username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-            className="border border-gray-300 rounded p-2"
-          />
-          <input
-            type="text"
-            placeholder="Location"
-            value={location}
-            onChange={(e) => setLocation(e.target.value)}
-            className="border border-gray-300 rounded p-2"
-          />
-          <input
-            type="number"
-            placeholder="Min Repos"
-            value={minRepos}
-            onChange={(e) => setMinRepos(e.target.value)}
-            className="border border-gray-300 rounded p-2"
+            className="w-full p-2 rounded bg-gray-700 border border-gray-600 text-white"
+            placeholder="e.g. octocat"
+            required
           />
         </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label className="block text-sm mb-1">Location (optional)</label>
+            <input
+              type="text"
+              value={location}
+              onChange={(e) => setLocation(e.target.value)}
+              className="w-full p-2 rounded bg-gray-700 border border-gray-600 text-white"
+              placeholder="e.g. Nairobi"
+            />
+          </div>
+          <div>
+            <label className="block text-sm mb-1">Minimum Repos (optional)</label>
+            <input
+              type="number"
+              value={minRepos}
+              onChange={(e) => setMinRepos(e.target.value)}
+              className="w-full p-2 rounded bg-gray-700 border border-gray-600 text-white"
+              placeholder="e.g. 10"
+              min="0"
+            />
+          </div>
+        </div>
+
         <button
           type="submit"
-          className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition"
+          className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded transition"
         >
           Search
         </button>
-        {error && <p className="text-red-500 text-sm text-center">{error}</p>}
       </form>
 
-      {loading && <p className="text-center">Loading...</p>}
+      {loading && <p className="mt-4 text-center text-yellow-400">Loading...</p>}
+      {error && <p className="mt-4 text-center text-red-500">{error}</p>}
 
-      {users.length > 0 && (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          {users.map((user) => (
-            <div key={user.id} className="bg-white shadow rounded p-4 text-center">
-              <img
-                src={user.avatar_url}
-                alt={user.login}
-                className="w-20 h-20 rounded-full mx-auto"
-              />
-              <h2 className="mt-2 text-lg font-semibold">{user.login}</h2>
+      <div className="mt-6 space-y-4">
+        {results.map((user) => (
+          <div
+            key={user.id}
+            className="bg-gray-700 p-4 rounded shadow flex items-center gap-4"
+          >
+            <img
+              src={user.avatar_url}
+              alt={user.login}
+              className="w-16 h-16 rounded-full border border-gray-500"
+            />
+            <div>
               <a
                 href={user.html_url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-blue-600 underline mt-1 inline-block"
+                className="text-xl font-semibold text-blue-400 hover:underline"
               >
-                View Profile
+                {user.login}
               </a>
+              {user.location && <p className="text-sm text-gray-300">📍 {user.location}</p>}
+              {user.public_repos !== undefined && (
+                <p className="text-sm text-gray-300">📦 {user.public_repos} repositories</p>
+              )}
             </div>
-          ))}
-        </div>
-      )}
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
