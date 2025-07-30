@@ -17,19 +17,26 @@ export default function Search() {
     }
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault(); // Prevent page reload
+    fetchUserData();
+  };
+
   return (
     <div style={{ textAlign: 'center', padding: '2rem' }}>
       <h1>GitHub User Search</h1>
-      <input
-        type="text"
-        placeholder="Enter GitHub username"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-        style={{ padding: '0.5rem', marginRight: '0.5rem' }}
-      />
-      <button onClick={fetchUserData} style={{ padding: '0.5rem 1rem' }}>
-        Search
-      </button>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          placeholder="Enter GitHub username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          style={{ padding: '0.5rem', marginRight: '0.5rem' }}
+        />
+        <button type="submit" style={{ padding: '0.5rem 1rem' }}>
+          Search
+        </button>
+      </form>
 
       {error && <p style={{ color: 'red', marginTop: '1rem' }}>{error}</p>}
 
