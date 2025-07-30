@@ -16,8 +16,9 @@ export default function Search() {
     try {
       const response = await axios.get(`https://api.github.com/users/${username}`);
       setUserData(response.data);
+    // eslint-disable-next-line no-unused-vars
     } catch (err) {
-      setError("Looks like we can't find the user 😔");
+      setError("Looks like we cant find the user.");
     } finally {
       setLoading(false);
     }
