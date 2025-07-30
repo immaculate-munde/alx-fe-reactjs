@@ -1,51 +1,44 @@
-import { useState } from "react";
-import axios from "axios";
+import { useState } from 'react';
+import axios from 'axios';
 
 export default function Search() {
-  const [username, setUsername] = useState("");
+  const [username, setUsername] = useState('');
   const [userData, setUserData] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState('');
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    setError(null);
-    setUserData(null);
-
+  const fetchUserData = async () => {
     try {
       const response = await axios.get(`https://api.github.com/users/${username}`);
       setUserData(response.data);
-    // eslint-disable-next-line no-unused-vars
+      setError('');
     } catch (err) {
-      setError("Looks like we cant find the user.");
-    } finally {
-      setLoading(false);
+      setUserData(null);
+      setError("Looks like we cant find the user");
     }
   };
 
   return (
-    <div className="container">
+    <div style={{ textAlign: 'center', padding: '2rem' }}>
       <h1>GitHub User Search</h1>
-      <form onSubmit={handleSubmit}>
-        <input
-          className="search-input"
-          type="text"
-          value={username}
-          placeholder="Enter GitHub username"
-          onChange={(e) => setUsername(e.target.value)}
-        />
-        <button className="search-button" type="submit">Search</button>
-      </form>
+      <input
+        type="text"
+        placeholder="Enter GitHub username"
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
+        style={{ padding: '0.5rem', marginRight: '0.5rem' }}
+      />
+      <button onClick={fetchUserData} style={{ padding: '0.5rem 1rem' }}>
+        Search
+      </button>
 
-      {loading && <p>Loading...</p>}
-      {error && <p>{error}</p>}
+      {error && <p style={{ color: 'red', marginTop: '1rem' }}>{error}</p>}
+
       {userData && (
-        <div className="user-card">
-          <img src={userData.avatar_url} alt="User Avatar" width="100" />
-          <h2>{userData.login}</h2>
-          <p>{userData.bio || "No bio available"}</p>
-          <a href={userData.html_url} target="_blank" rel="noreferrer">View Profile</a>
+        <div className="user-info" style={{ marginTop: '2rem' }}>
+          <img src={userData.avatar_url} alt="User avatar" width="100" />
+          <h2>{userData.name || userData.login}</h2>
+          <p>{userData.bio || 'No bio available'}</p>
+          <p>Followers: {userData.followers}</p>
         </div>
       )}
     </div>
