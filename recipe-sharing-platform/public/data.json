@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "title": "Spaghetti Carbonara",
+    "summary": "A classic Italian pasta dish with eggs, cheese, bacon, and black pepper.",
+    "image": "spaghetti-carbonara.png"
+  },
+  {
+    "id": 2,
+    "title": "Chicken Tikka Masala",
+    "summary": "Chunks of grilled chicken (tikka) cooked in a smooth buttery & creamy tomato-based gravy.",
+    "image": "chicken-tikka-masala.png"
+  },
+  {
+    "id": 3,
+    "title": "Poke Bowl",
+    "summary": "A fresh Hawaiian dish with marinated fish, vegetables, and rice.",
+    "image": "poke-bowl.png"
+  }
+]
