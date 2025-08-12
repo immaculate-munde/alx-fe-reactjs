@@ -47,7 +47,7 @@ const AddRecipeForm = () => {
     <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-green-50 via-white to-green-100 p-5">
       <form
         onSubmit={handleSubmit}
-        className="bg-white p-8 rounded-2xl shadow-lg w-full max-w-lg"
+        className="bg-white p-8 rounded-2xl shadow-lg w-full max-w-lg sm max-wmd md:maw-w-lg lg:max-w-xl"
       >
         <h2 className="text-2xl font-bold text-green-800 mb-6 text-center">
           Add a New Recipe
