@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import data from "../data.json";
 
 const RecipeDetail = () => {
   const { id } = useParams();
-  const recipe = data.find((r) => r.id.toString() === id);
+  const [recipe, setRecipe] = useState(null);
+
+  useEffect(() => {
+    // Simulate data fetching from local JSON
+    const found = data.find((r) => r.id.toString() === id);
+    setRecipe(found);
+  }, [id]);
 
   if (!recipe) {
     return (
