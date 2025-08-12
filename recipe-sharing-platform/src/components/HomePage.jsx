@@ -1,16 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
-import { Link } from "react-router-dom"; // ✅ Added for navigation
-import data from "../data.json"; // Import mock data directly
+import { Link } from "react-router-dom";
+import recipes from "../data.json"; // ✅ Import data directly
 
 const HomePage = () => {
-  const [recipes, setRecipes] = useState([]);
-
-  useEffect(() => {
-    // Load recipes from imported JSON
-    setRecipes(data);
-  }, []);
-
   return (
     <div className="bg-gradient-to-br from-green-50 via-white to-green-100 min-h-screen py-10 px-5">
       {/* Heading */}
@@ -22,45 +15,61 @@ const HomePage = () => {
         </div>
       </div>
 
+      {/* Add Recipe Button */}
+      <div className="text-center mb-6">
+        <Link
+          to="/add-recipe"
+          className="inline-block px-6 py-3 bg-green-500 text-white rounded-full hover:bg-green-600 transition"
+        >
+          ➕ Add a Recipe
+        </Link>
+      </div>
+
       {/* Responsive Grid for Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-        {recipes.map((recipe, index) => (
-          <div
-            key={recipe.id}
-            className={`bg-white rounded-3xl shadow-lg hover:shadow-2xl transform hover:scale-105 transition duration-300 p-6 ${
-              index % 2 === 0 ? "mt-0" : "mt-10"
-            }`}
-          >
-            {/* Circular Image */}
-            <div className="w-40 h-40 mx-auto mb-4 rounded-full overflow-hidden shadow-md">
-              <img
-                src={recipe.image}
-                alt={recipe.title}
-                className="w-full h-full object-cover"
-              />
+        {recipes && recipes.length > 0 ? (
+          recipes.map((recipe, index) => (
+            <div
+              key={recipe.id}
+              className={`bg-white rounded-3xl shadow-lg hover:shadow-2xl transform hover:scale-105 transition duration-300 p-6 ${
+                index % 2 === 0 ? "mt-0" : "mt-10"
+              }`}
+            >
+              {/* Circular Image */}
+              <div className="w-40 h-40 mx-auto mb-4 rounded-full overflow-hidden shadow-md">
+                <img
+                  src={recipe.image}
+                  alt={recipe.title}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+
+              {/* Title */}
+              <h2 className="text-lg font-semibold text-green-900 text-center">
+                {recipe.title}
+              </h2>
+
+              {/* Summary */}
+              <p className="text-gray-600 text-sm mt-2 text-center">
+                {recipe.summary}
+              </p>
+
+              {/* View Button */}
+              <div className="text-center">
+                <Link
+                  to={`/recipe/${recipe.id}`}
+                  className="mt-4 inline-block px-5 py-2 bg-green-600 text-white rounded-full hover:bg-green-700 transition"
+                >
+                  View Recipe
+                </Link>
+              </div>
             </div>
-
-            {/* Title */}
-            <h2 className="text-lg font-semibold text-green-900 text-center">
-              {recipe.title}
-            </h2>
-
-            {/* Summary */}
-            <p className="text-gray-600 text-sm mt-2 text-center">
-              {recipe.summary}
-            </p>
-
-            {/* View Button */}
-            <div className="text-center">
-              <Link
-                to={`/recipe/${recipe.id}`}
-                className="mt-4 inline-block px-5 py-2 bg-green-600 text-white rounded-full hover:bg-green-700 transition"
-              >
-                View Recipe
-              </Link>
-            </div>
-          </div>
-        ))}
+          ))
+        ) : (
+          <p className="text-center text-gray-500 col-span-full">
+            No recipes available.
+          </p>
+        )}
       </div>
 
       {/* Social Media Icons */}
