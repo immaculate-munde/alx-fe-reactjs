@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
+import data from "../data.json"; // Import mock data directly
 
 const HomePage = () => {
   const [recipes, setRecipes] = useState([]);
 
   useEffect(() => {
-    fetch("/data.json")
-      .then((res) => res.json())
-      .then((data) => setRecipes(data))
-      .catch((err) => console.error("Error loading recipes:", err));
+    // Load recipes from imported JSON
+    setRecipes(data);
   }, []);
 
   return (
@@ -22,12 +21,12 @@ const HomePage = () => {
         </div>
       </div>
 
-      {/* Floating Staggered Cards */}
-      <div className="columns-1 sm:columns-2 lg:columns-3 gap-8 max-w-6xl mx-auto">
+      {/* Responsive Grid for Cards */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
         {recipes.map((recipe, index) => (
           <div
             key={recipe.id}
-            className={`mb-8 break-inside-avoid bg-white rounded-3xl shadow-lg hover:shadow-2xl transform hover:scale-105 transition duration-300 p-6 ${
+            className={`bg-white rounded-3xl shadow-lg hover:shadow-2xl transform hover:scale-105 transition duration-300 p-6 ${
               index % 2 === 0 ? "mt-0" : "mt-10"
             }`}
           >
@@ -39,14 +38,17 @@ const HomePage = () => {
                 className="w-full h-full object-cover"
               />
             </div>
+
             {/* Title */}
             <h2 className="text-lg font-semibold text-green-900 text-center">
               {recipe.title}
             </h2>
+
             {/* Summary */}
             <p className="text-gray-600 text-sm mt-2 text-center">
               {recipe.summary}
             </p>
+
             {/* View Button */}
             <div className="text-center">
               <a
