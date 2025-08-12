@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
+import { Link } from "react-router-dom"; // ✅ Added for navigation
 import data from "../data.json"; // Import mock data directly
 
 const HomePage = () => {
@@ -51,12 +52,12 @@ const HomePage = () => {
 
             {/* View Button */}
             <div className="text-center">
-              <a
-                href={`/recipe/${recipe.id}`}
+              <Link
+                to={`/recipe/${recipe.id}`}
                 className="mt-4 inline-block px-5 py-2 bg-green-600 text-white rounded-full hover:bg-green-700 transition"
               >
                 View Recipe
-              </a>
+              </Link>
             </div>
           </div>
         ))}
