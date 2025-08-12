@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "title": "Spaghetti Carbonara",
+    "summary": "A classic Italian pasta dish with eggs, cheese, bacon, and black pepper.",
+    "image": "spaghetti-carbonara.png"
+  },
+  {
+    "id": 2,
+    "title": "Chicken Tikka Masala",
+    "summary": "Chunks of grilled chicken (tikka) cooked in a smooth buttery & creamy tomato-based gravy.",
+    "image": "chicken-tikka-masala.png"
+  },
+  {
+    "id": 3,
+    "title": "Poke Bowl",
+    "summary": "A fresh Hawaiian dish with marinated fish, vegetables, and rice.",
+    "image": "poke-bowl.png"
+  },
+  {
+    "id": 4,
+    "title": "Avocado Toast",
+    "summary": "Sourdough topped with smashed avocado and chili flakes.",
+    "image": "avocado-toast.png"
+  },
+  {
+    "id": 5,
+    "title": "Berry Smoothie",
+    "summary": "A creamy blend of berries, yogurt, and honey.",
+    "image": "berry-smoothie.png"
+  },
+  {
+    "id": 6,
+    "title": "Caesar Salad",
+    "summary": "Crisp romaine lettuce, croutons, and Caesar dressing.",
+    "image": "caesar-salad.png"
+  }
+]
