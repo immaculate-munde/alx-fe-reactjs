@@ -1,4 +1,4 @@
-import { Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import Home from "./pages/Home";
 import Profile from "./components/Profile";
 import ProfileDetails from "./components/ProfileDetails";
@@ -12,7 +12,7 @@ function NotFound() {
 
 function App() {
   return (
-    <>
+    <BrowserRouter>
       <nav>
         <Link to="/">Home</Link> |{" "}
         <Link to="/profile">Profile</Link> |{" "}
@@ -39,7 +39,7 @@ function App() {
 
         <Route path="*" element={<NotFound />} />
       </Routes>
-    </>
+    </BrowserRouter>
   );
 }
 
