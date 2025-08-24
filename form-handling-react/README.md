@@ -1,12 +1,49 @@
-# React + Vite
+# Registration Forms with React, Formik & Yup
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project demonstrates two approaches to building registration forms in React:
 
-Currently, two official plugins are available:
+1. **Controlled Components** – using React's `useState` hook to manage form inputs.
+2. **Formik + Yup** – using Formik for form handling and Yup for validation.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🚀 Features
+- Controlled registration form with validation
+- Formik form with Yup validation schema
+- Tailwind CSS styling
+- Simulated API calls on form submission
+- Error handling and user-friendly messages
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🛠️ Tech Stack
+- [React](https://reactjs.org/)
+- [Formik](https://formik.org/)
+- [Yup](https://github.com/jquense/yup)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Vite](https://vitejs.dev/)
+
+---
+
+## 📂 Project Structure
+src/
+components/
+RegistrationForm.jsx # Controlled form
+FormikForm.jsx # Formik + Yup form
+App.jsx
+main.jsx
+
+
+## 🖥️ Running the Project
+1. Clone the repo:
+   ```bash
+   git clone <your-repo-url>
+   cd <your-project>
+
+Install dependencies:
+npm install
+
+Start development server:
+npm run dev
+Open http://localhost:5173 in your browser.
+
