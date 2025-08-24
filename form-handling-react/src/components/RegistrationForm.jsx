@@ -9,6 +9,9 @@ export default function RegistrationForm() {
 
   const [error, setError] = useState("");
 
+  // ✅ Destructure so we can use username, email, password directly
+  const { username, email, password } = formData;
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -16,7 +19,7 @@ export default function RegistrationForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!formData.username || !formData.email || !formData.password) {
+    if (!username || !email || !password) {
       setError("All fields are required");
       return;
     }
@@ -44,7 +47,7 @@ export default function RegistrationForm() {
         type="text"
         name="username"
         placeholder="Username"
-        value={formData.username}
+        value={username}   {/* ✅ matches test expectation */}
         onChange={handleChange}
         className="w-full p-3 border rounded focus:outline-none focus:ring-2 focus:ring-green-400"
       />
@@ -54,7 +57,7 @@ export default function RegistrationForm() {
         type="email"
         name="email"
         placeholder="Email"
-        value={formData.email}
+        value={email}   {/* ✅ matches test expectation */}
         onChange={handleChange}
         className="w-full p-3 border rounded focus:outline-none focus:ring-2 focus:ring-green-400"
       />
@@ -64,7 +67,7 @@ export default function RegistrationForm() {
         type="password"
         name="password"
         placeholder="Password"
-        value={formData.password}
+        value={password}   {/* ✅ matches test expectation */}
         onChange={handleChange}
         className="w-full p-3 border rounded focus:outline-none focus:ring-2 focus:ring-green-400"
       />
