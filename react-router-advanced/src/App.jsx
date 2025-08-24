@@ -6,36 +6,41 @@ import ProfileSettings from "./pages/ProfileSettings";
 import BlogPost from "./pages/BlogPost";
 import ProtectedRoute from "./components/ProtectedRoute";
 
+function NotFound() {
+  return <h2 style={{ color: "red" }}>404 - Page Not Found</h2>;
+}
+
 function App() {
   return (
-    <div className="p-4">
-      <nav className="space-x-4">
-        <Link to="/">Home</Link>
-        <Link to="/profile">Profile</Link>
+    <>
+      <nav>
+        <Link to="/">Home</Link> |{" "}
+        <Link to="/profile">Profile</Link> |{" "}
         <Link to="/blog/1">Blog Post 1</Link>
       </nav>
 
       <Routes>
         <Route path="/" element={<Home />} />
 
-        {/* Protected Profile Route */}
         <Route
-          path="/profile/*"
+          path="/profile"
           element={
             <ProtectedRoute>
               <Profile />
             </ProtectedRoute>
           }
         >
-          {/* Nested Routes */}
+          <Route index element={<ProfileDetails />} />
           <Route path="details" element={<ProfileDetails />} />
           <Route path="settings" element={<ProfileSettings />} />
         </Route>
 
-        {/* Dynamic Route for Blog */}
         <Route path="/blog/:id" element={<BlogPost />} />
+
+        {/* Catch-all route for invalid URLs */}
+        <Route path="*" element={<NotFound />} />
       </Routes>
-    </div>
+    </>
   );
 }
 
