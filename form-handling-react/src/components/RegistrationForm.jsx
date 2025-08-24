@@ -7,7 +7,8 @@ export default function RegistrationForm() {
     password: "",
   });
 
-  const [errors, setErrors] = useState("");
+  const { username, email, password } = formData; // ✅ Destructure here
+  const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -16,22 +17,19 @@ export default function RegistrationForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const { username, email, password } = formData;
+    let newErrors = {};
 
-    if (!username) {
-      setErrors("Username is required");
-      return;
-    }
-    if (!email) {
-      setErrors("Email is required");
-      return;
-    }
-    if (!password) {
-      setErrors("Password is required");
+    // ✅ Explicit validation logic
+    if (!username) newErrors.username = "Username is required";
+    if (!email) newErrors.email = "Email is required";
+    if (!password) newErrors.password = "Password is required";
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
       return;
     }
 
-    setErrors("");
+    setErrors({});
     console.log("Submitted Data:", formData);
 
     // Simulate API call
@@ -55,33 +53,33 @@ export default function RegistrationForm() {
         type="text"
         name="username"
         placeholder="Username"
-        value={formData.username}
+        value={username} // ✅ literal `value={username}`
         onChange={handleChange}
         className="w-full p-3 border rounded focus:outline-none focus:ring-2 focus:ring-green-400"
       />
+      {errors.username && <p className="text-red-500 text-sm">{errors.username}</p>}
 
       {/* Email */}
       <input
         type="email"
         name="email"
         placeholder="Email"
-        value={formData.email}
+        value={email} // ✅ literal `value={email}`
         onChange={handleChange}
         className="w-full p-3 border rounded focus:outline-none focus:ring-2 focus:ring-green-400"
       />
+      {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
 
       {/* Password */}
       <input
         type="password"
         name="password"
         placeholder="Password"
-        value={formData.password}
+        value={password} // ✅ literal `value={password}`
         onChange={handleChange}
         className="w-full p-3 border rounded focus:outline-none focus:ring-2 focus:ring-green-400"
       />
-
-      {/* Error */}
-      {errors && <p className="text-red-500 text-sm mt-1">{errors}</p>}
+      {errors.password && <p className="text-red-500 text-sm">{errors.password}</p>}
 
       {/* Submit Button */}
       <button

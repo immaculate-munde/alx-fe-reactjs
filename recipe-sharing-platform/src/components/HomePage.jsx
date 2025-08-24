@@ -1,9 +1,11 @@
 import React from "react";
 import { FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
-import { Link } from "react-router-dom";
-import recipes from "../data.json"; // ✅ Import data directly
+import { Link, useNavigate } from "react-router-dom";
+import recipes from "../data.json";
 
-const HomePage = () => {
+const HomePage = ({ onDeleteRecipe }) => {
+  const navigate = useNavigate();
+
   return (
     <div className="bg-gradient-to-br from-green-50 via-white to-green-100 min-h-screen py-10 px-5">
       {/* Heading */}
@@ -53,6 +55,22 @@ const HomePage = () => {
               <p className="text-gray-600 text-sm mt-2 text-center">
                 {recipe.summary}
               </p>
+
+              {/* Action Buttons */}
+              <div className="flex justify-center gap-4 mt-4 mb-4">
+                <button
+                  onClick={() => navigate(`/edit-recipe/${recipe.id}`)}
+                  className="px-4 py-2 bg-yellow-400 rounded hover:bg-yellow-500 text-white transition"
+                >
+                  Edit
+                </button>
+                <button
+                  onClick={() => onDeleteRecipe(recipe.id)}
+                  className="px-4 py-2 bg-red-600 rounded hover:bg-red-700 text-white transition"
+                >
+                  Delete
+                </button>
+              </div>
 
               {/* View Button */}
               <div className="text-center">

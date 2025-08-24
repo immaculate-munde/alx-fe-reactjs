@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 
-const AddRecipeForm = () => {
+const AddRecipeForm = ({ onAddRecipe }) => {
   const [title, setTitle] = useState("");
   const [ingredients, setIngredients] = useState("");
   const [steps, setSteps] = useState("");
+  const [imageData, setImageData] = useState(null);
   const [errors, setErrors] = useState({});
 
   const validateForm = () => {
@@ -22,6 +23,17 @@ const AddRecipeForm = () => {
     return Object.keys(formErrors).length === 0;
   };
 
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setImageData(reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!validateForm()) return;
@@ -30,16 +42,18 @@ const AddRecipeForm = () => {
       id: Date.now(),
       title,
       ingredients: ingredients.split(",").map(i => i.trim()),
-      steps,
+      instructions: steps.split(".").map(s => s.trim()).filter(Boolean),
+      summary: steps.slice(0, 100) + "...",
+      image: imageData || "https://via.placeholder.com/150",
     };
 
-    console.log("New recipe submitted:", newRecipe);
+    onAddRecipe(newRecipe);
     alert("Recipe submitted successfully!");
 
-    // Reset form
     setTitle("");
     setIngredients("");
     setSteps("");
+    setImageData(null);
     setErrors({});
   };
 
@@ -47,7 +61,7 @@ const AddRecipeForm = () => {
     <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-green-50 via-white to-green-100 p-5">
       <form
         onSubmit={handleSubmit}
-        className="bg-white p-8 rounded-2xl shadow-lg w-full max-w-lg sm max-wmd md:maw-w-lg lg:max-w-xl"
+        className="bg-white p-8 rounded-2xl shadow-lg w-full max-w-lg sm:max-w-md md:max-w-lg lg:max-w-xl"
       >
         <h2 className="text-2xl font-bold text-green-800 mb-6 text-center">
           Add a New Recipe
@@ -84,7 +98,7 @@ const AddRecipeForm = () => {
               errors.ingredients ? "border-red-500" : "border-gray-300"
             } rounded-lg p-3 h-24 focus:outline-none focus:ring-2 focus:ring-green-400`}
             placeholder="e.g., Tomato, Onion, Garlic"
-          ></textarea>
+          />
           {errors.ingredients && (
             <p className="text-red-500 text-sm mt-1">{errors.ingredients}</p>
           )}
@@ -102,9 +116,42 @@ const AddRecipeForm = () => {
               errors.steps ? "border-red-500" : "border-gray-300"
             } rounded-lg p-3 h-32 focus:outline-none focus:ring-2 focus:ring-green-400`}
             placeholder="Describe how to prepare the recipe..."
-          ></textarea>
+          />
           {errors.steps && (
             <p className="text-red-500 text-sm mt-1">{errors.steps}</p>
+          )}
+        </div>
+
+        {/* Image Upload */}
+        <div className="mb-6">
+          <label className="block text-green-900 font-medium mb-2">
+            Upload Recipe Image
+          </label>
+
+          {/* Hidden file input */}
+          <input
+            type="file"
+            accept="image/*"
+            id="fileInput"
+            onChange={handleImageChange}
+            className="hidden"
+          />
+
+          {/* Styled label as button */}
+          <label
+            htmlFor="fileInput"
+            className="inline-block cursor-pointer bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition duration-300 font-medium"
+          >
+            Choose File
+          </label>
+
+          {/* Image preview */}
+          {imageData && (
+            <img
+              src={imageData}
+              alt="Recipe preview"
+              className="mt-4 mx-auto w-40 h-40 object-cover rounded-xl shadow-md"
+            />
           )}
         </div>
 
