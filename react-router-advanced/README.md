@@ -1,12 +1,19 @@
-# React + Vite
+# Advanced Routing in React with React Router
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project demonstrates advanced routing techniques using **React Router v6**:
 
-Currently, two official plugins are available:
+## Features
+- **Nested Routes**: `/profile/details` and `/profile/settings`
+- **Dynamic Routes**: `/blog/:id` for blog posts
+- **Protected Routes**: `/profile/*` requires authentication
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Setup
+npm install
+npm run dev
+`
+Testing
+Navigate to /profile → redirects to home if not authenticated
 
-## Expanding the ESLint configuration
+Set isAuthenticated = true in ProtectedRoute.jsx to access profile pages
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+/blog/1, /blog/2, etc. load dynamically
