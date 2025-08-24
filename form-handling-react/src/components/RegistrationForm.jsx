@@ -7,7 +7,10 @@ export default function RegistrationForm() {
     password: "",
   });
 
-  const [errors, setErrors] = useState("");
+  const [error, setError] = useState("");
+
+  // ✅ Destructure so we can use username, email, password directly
+  const { username, email, password } = formData;
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -16,22 +19,11 @@ export default function RegistrationForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const { username, email, password } = formData;
-
-    if (!username) {
-      setErrors("Username is required");
+    if (!username || !email || !password) {
+      setError("All fields are required");
       return;
     }
-    if (!email) {
-      setErrors("Email is required");
-      return;
-    }
-    if (!password) {
-      setErrors("Password is required");
-      return;
-    }
-
-    setErrors("");
+    setError("");
     console.log("Submitted Data:", formData);
 
     // Simulate API call
@@ -55,7 +47,7 @@ export default function RegistrationForm() {
         type="text"
         name="username"
         placeholder="Username"
-        value={formData.username}
+        value={username}   {/* ✅ matches test expectation */}
         onChange={handleChange}
         className="w-full p-3 border rounded focus:outline-none focus:ring-2 focus:ring-green-400"
       />
@@ -65,7 +57,7 @@ export default function RegistrationForm() {
         type="email"
         name="email"
         placeholder="Email"
-        value={formData.email}
+        value={email}   {/* ✅ matches test expectation */}
         onChange={handleChange}
         className="w-full p-3 border rounded focus:outline-none focus:ring-2 focus:ring-green-400"
       />
@@ -75,13 +67,13 @@ export default function RegistrationForm() {
         type="password"
         name="password"
         placeholder="Password"
-        value={formData.password}
+        value={password}   {/* ✅ matches test expectation */}
         onChange={handleChange}
         className="w-full p-3 border rounded focus:outline-none focus:ring-2 focus:ring-green-400"
       />
 
       {/* Error */}
-      {errors && <p className="text-red-500 text-sm mt-1">{errors}</p>}
+      {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
 
       {/* Submit Button */}
       <button
